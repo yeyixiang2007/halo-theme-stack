@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" th:replace="~{modules/layout :: html(content = ~{::content}, title='友情链接', pageType='links' )}">
+<th:block th:fragment="content">
+    <div class="container main-container flex on-phone--column extended">
+        <!--      Left Sidebar-->
+        <th:block th:replace="~{modules/common/left-sidebar :: left-sidebar}"></th:block>
+        <main class="main full-width">
+            <th:block th:if="${theme.config.links.show_type == 'post_first'}">
+                <div class="article-list--compact links">
+                    <th:block th:each="group : ${groups}">
+
+                        <article th:each="link : ${group.links}" :key="i">
+                            <a th:href="${link.spec.url}" target="_blank" rel="noopener">
+                                <div class="article-details">
+                                    <h2 class="article-title" th:text="${link.spec.displayName}"></h2>
+                                    <footer class="article-time" th:text="${link.spec.description}">
+                                    </footer>
+                                </div>
+
+
+                                <div class="article-image">
+                                    <img th:src="${link.spec.logo}" th:alt="${link.spec.displayName}" loading="lazy">
+                                </div>
+
+                            </a>
+                        </article>
+                    </th:block>
+
+                </div>
+            </th:block>
+            <th:block th:if="${theme.config.links.show_type == 'links_first'}">
+                <div class="article-list--compact links">
+                    <th:block th:each="group : ${linkFinder.groupBy()}">
+
+                        <article th:each="link : ${group.links}" :key="i">
+                            <a th:href="${link.spec.url}" target="_blank" rel="noopener">
+                                <div class="article-details">
+                                    <h2 class="article-title" th:text="${link.spec.displayName}"></h2>
+                                    <footer class="article-time" th:text="${link.spec.description}">
+                                    </footer>
+                                </div>
+
+
+                                <div class="article-image">
+                                    <img th:src="${link.spec.logo}" th:alt="${link.spec.displayName}" loading="lazy">
+                                </div>
+
+                            </a>
+                        </article>
+                    </th:block>
+
+                </div>
+            </th:block>
+            <th:block th:if="${theme.config.links.enable_comment}">
+                <!--        Comment-->
+                <th:block
+                        th:replace="~{modules/common/comment :: ${theme.config.base.comment_system}(name='PluginLinks', kind='Plugin', group='plugin.halo.run')}">
+
+                </th:block>
+            </th:block>
+
+            <!--Footer-->
+            <th:block th:replace="~{modules/common/footer :: footer}"></th:block>
+
+        </main>
+    </div>
+    <!--    Tail JS-->
+    <th:block th:replace="~{modules/tail :: tail}"></th:block>
+</th:block>
+</html>
