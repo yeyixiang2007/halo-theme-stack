@@ -15,7 +15,7 @@ import StackColorScheme from './ts/colorScheme';
 import { setupSmoothAnchors } from "./ts/smoothAnchors";
 import * as tocbot from 'tocbot';
 
-let Stack = {
+const Stack = {
     init: () => {
         /**
          * Bind menu event
@@ -36,7 +36,7 @@ let Stack = {
          */
         const articleTile = document.querySelector('.article-list--tile');
         if (articleTile) {
-            let observer = new IntersectionObserver(async (entries, observer) => {
+            const observer = new IntersectionObserver(async (entries, observer) => {
                 entries.forEach(entry => {
                     if (!entry.isIntersecting) return;
                     observer.unobserve(entry.target);

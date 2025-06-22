@@ -119,7 +119,7 @@
             <th:block th:if="${#annotations.getOrDefault(post, 'showComment', 'true')  == 'true'}">
             <!--        Comment-->
             <th:block
-                    th:replace="~{modules/common/comment :: ${theme.config.base.comment_system}(name=${post.metadata.name}, kind='Post')}">
+                    th:replace="~{modules/common/comment :: ${theme.config.base.comment_system}(name=${post.metadata.name}, kind='Post', group='content.halo.run')}">
 
             </th:block>
             </th:block>

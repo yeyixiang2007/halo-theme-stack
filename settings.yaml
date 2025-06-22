@@ -256,6 +256,18 @@ spec:
               label: "文章页优先"
             - value: "links_first"
               label: "友链页优先"
+          help: "仅自定义模板生效"
+        - $formkit: radio
+          name: enable_comment
+          label: 是否开启评论
+          value:
+          options:
+            - value: true
+              label: 开启
+            - value: false
+              label: 关闭
+          help: "是否开启友链评论 (仅默认路由生效)"
+
     - group: photos
       label: 相册
       formSchema:
