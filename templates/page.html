@@ -95,7 +95,7 @@
             <th:block th:if="${#annotations.getOrDefault(singlePage, 'showComment', 'false')  == 'true'}">
             <!--        Comment-->
             <th:block
-                    th:replace="~{modules/common/comment :: ${theme.config.base.comment_system}(name=${singlePage.metadata.name}, kind='SinglePage')}">
+                    th:replace="~{modules/common/comment :: ${theme.config.base.comment_system}(name=${singlePage.metadata.name}, kind='SinglePage', group='content.halo.run')}">
 
             </th:block>
             </th:block>

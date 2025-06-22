@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
 <th:block th:fragment="comment">
-    <th:block th:fragment="waline(name, kind)">
+    <th:block th:fragment="waline(name, kind, group)">
         <div class="article-comment">
             <div id="waline"></div>
 
@@ -47,7 +47,7 @@
         <script th:if="${theme.config.base.waline.waline_setting == 'custom'}"
                 th:utext="${theme.config.base.waline.waline_custom}"></script>
     </th:block>
-    <th:block th:fragment="default(name,kind)">
+    <th:block th:fragment="default(name,kind, group)">
         <div class="article-comment">
             <div class="comment-head">
                 <div class="comment-title">
@@ -55,8 +55,7 @@
                 </div>
             </div>
             <halo:comment
-                    group="content.halo.run"
-                    th:attr="name=${name},kind=${kind}"
+                    th:attr="name=${name},kind=${kind},group=${group}"
             />
 
         </div>
