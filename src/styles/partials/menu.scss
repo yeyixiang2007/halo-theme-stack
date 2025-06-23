@@ -5,7 +5,7 @@
  * @site https://jonsuh.com/hamburgers
  * @link https://github.com/jonsuh/hamburgers
  */
-
+@use "../breakpoints" as bp;
 .hamburger {
     padding-top: 10px;
     display: inline-block;
@@ -111,11 +111,12 @@
         right: auto;
     }
 
-    @include respond(md) {
+    @include bp.respond(md) {
         display: none;
     }
-
-    outline: none;
+    & {
+        outline: none;
+    }
 
     &.is-active {
         .hamburger-inner,
@@ -128,7 +129,6 @@
 
 /* Menu style */
 .menu {
-    padding-left: 0;
     list-style: none;
     flex-direction: column;
     overflow-y: auto;
@@ -141,14 +141,14 @@
     margin: 0 calc(var(--container-padding) * -1);
 
     padding: 30px 30px;
-    @include respond(xl) {
+    @include bp.respond(xl) {
         padding: 15px 0;
     }
 
     &,
     .menu-bottom-section {
         gap: 30px;
-        @include respond(xl) {
+        @include bp.respond(xl) {
             gap: 25px;
         }
     }
@@ -157,7 +157,7 @@
         display: flex;
     }
 
-    @include respond(md) {
+    @include bp.respond(md) {
         align-items: flex-end;
         display: flex;
         background-color: transparent;
@@ -171,7 +171,7 @@
         vertical-align: middle;
         padding: 0;
 
-        @include respond(md) {
+        @include bp.respond(md) {
             width: 100%;
         }
 

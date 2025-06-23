@@ -1,3 +1,7 @@
+@use "sass:meta";
+@use "breakpoints" as bp;
+
+// 默认标签颜色
 $defaultTagBackgrounds: #8ea885, #df7988, #0177b8, #ffb900, #6b69d6;
 $defaultTagColors: #fff, #fff, #fff, #fff, #fff;
 
@@ -7,19 +11,13 @@ $defaultTagColors: #fff, #fff, #fff, #fff, #fff;
 :root {
     --main-top-padding: 35px;
 
-    @include respond(xl) {
-        --main-top-padding: 50px;
-    }
-
     --body-background: #f5f5fa;
-
     --accent-color: #34495e;
     --accent-color-darker: #2c3e50;
     --accent-color-text: #fff;
     --body-text-color: #707070;
 
     --tag-border-radius: 4px;
-
     --section-separation: 40px;
 
     --scrollbar-thumb: hsl(0, 0%, 85%);
@@ -34,9 +32,15 @@ $defaultTagColors: #fff, #fff, #fff, #fff, #fff;
         --scrollbar-thumb: hsl(0, 0%, 40%);
         --scrollbar-track: var(--body-background);
     }
+
+    @include bp.respond(xl) {
+        & {
+            --main-top-padding: 50px;
+        }
+    }
 }
 
-/**
+/*
 *   Global font family
 */
 :root {
@@ -61,23 +65,21 @@ $defaultTagColors: #fff, #fff, #fff, #fff, #fff;
     --card-text-color-purple: rgba(0.49, 0.31, 275.75, 0.8);
 
     --card-separator-color: rgba(218, 218, 218, 0.5);
-
     --card-border-radius: 10px;
-
     --card-padding: 20px;
-
-    @include respond(md) {
-        --card-padding: 25px;
-    }
-
-    @include respond(xl) {
-        --card-padding: 30px;
-    }
-
     --small-card-padding: 25px 20px;
 
-    @include respond(md) {
-        --small-card-padding: 25px;
+    @include bp.respond(md) {
+        & {
+            --card-padding: 25px;
+            --small-card-padding: 25px;
+        }
+    }
+
+    @include bp.respond(xl) {
+        & {
+            --card-padding: 30px;
+        }
     }
 
     &[data-scheme="dark"] {
@@ -92,18 +94,19 @@ $defaultTagColors: #fff, #fff, #fff, #fff, #fff;
     }
 }
 
-/**
+/*
 *   Article content font settings
 */
 :root {
     --article-font-family: var(--base-font-family);
     --article-font-size: 1.6rem;
-
-    @include respond(md) {
-        --article-font-size: 1.7rem;
-    }
-
     --article-line-height: 1.85;
+
+    @include bp.respond(md) {
+        & {
+            --article-font-size: 1.7rem;
+        }
+    }
 }
 
 /*
@@ -112,7 +115,6 @@ $defaultTagColors: #fff, #fff, #fff, #fff, #fff;
 :root {
     --blockquote-border-size: 4px;
     --blockquote-background-color: rgb(248 248 248);
-
     --heading-border-size: 4px;
 
     --link-background-color: 189, 195, 199;
@@ -127,47 +129,36 @@ $defaultTagColors: #fff, #fff, #fff, #fff, #fff;
 
     --table-border-color: #dadada;
     --tr-even-background-color: #efefee;
-
     --kbd-border-color: #dadada;
 
     &[data-scheme="dark"] {
         --code-background-color: #272822;
         --code-text-color: rgba(255, 255, 255, 0.9);
-
         --table-border-color: #717171;
         --tr-even-background-color: #545454;
-
         --blockquote-background-color: rgb(75 75 75);
     }
 }
 
 /*
 *   Shadow style
-*   Thanks to https://www.figma.com/community/plugin/744987207861965946/Shadow-picker
 */
 :root {
     --shadow-l1: 0px 4px 8px rgba(0, 0, 0, 0.04), 0px 0px 2px rgba(0, 0, 0, 0.06), 0px 0px 1px rgba(0, 0, 0, 0.04);
     --shadow-l2: 0px 10px 20px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);
     --shadow-l3: 0px 10px 20px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);
     --shadow-l4: 0px 24px 32px rgba(0, 0, 0, 0.04), 0px 16px 24px rgba(0, 0, 0, 0.04), 0px 4px 8px rgba(0, 0, 0, 0.04),
-        0px 0px 1px rgba(0, 0, 0, 0.04);
+    0px 0px 1px rgba(0, 0, 0, 0.04);
 }
 
-[data-scheme="light"] {
-    --pre-text-color: #272822;
-    --pre-background-color: #fafafa;
-}
-
-[data-scheme="dark"] {
-    --pre-text-color: #f8f8f2;
-    --pre-background-color: #272822;
-}
-
+/*
+*   Theme padding & halo 评论区样式
+*/
 :root {
     --menu-icon-separation: 40px;
     --container-padding: 15px;
     --widget-separation: var(--section-separation);
 }
 
-//halo评论区样式
-@import "halo-variables";
+// 动态加载 halo 特定变量（仅在支持时有效）
+@include meta.load-css("halo-variables");

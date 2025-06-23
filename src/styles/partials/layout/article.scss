@@ -1,8 +1,9 @@
+@use '../../breakpoints' as bp;
 .article-page {
     &.hide-sidebar-sm .left-sidebar {
         display: none;
 
-        @include respond(md) {
+        @include bp.respond(md) {
             display: inherit;
         }
     }
@@ -34,7 +35,7 @@
             color: var(--card-text-color-main);
 
             .footnotes {
-                font-family: var(--base-font-family);
+                font-family: var(--base-font-family), serif;
             }
 
             img {
@@ -204,7 +205,7 @@
 }
 
 .article-content, .item-content {
-    font-family: var(--article-font-family);
+    font-family: var(--article-font-family), serif;
     font-size: var(--article-font-size);
     padding: 0 var(--card-padding);
     line-height: var(--article-line-height);
@@ -265,7 +266,7 @@
         background-color: var(--code-background-color);
         padding: 2px 4px;
         border-radius: var(--tag-border-radius);
-        font-family: var(--code-font-family);
+        font-family: var(--code-font-family), serif;
     }
 
     a,
@@ -291,7 +292,7 @@
         display: block;
         background-color: var(--pre-background-color);
         color: var(--pre-text-color);
-        font-family: var(--code-font-family);
+        font-family: var(--code-font-family), serif;
         line-height: 1.428571429;
         word-break: break-all;
         padding: var(--card-padding);
@@ -315,13 +316,11 @@
         &:before{
             content: "";
             display: block;
-            background: url(/themes/theme-Stack2/assets/images/code-header.svg);
             height: 32px;
             width: 100%;
             background-size: 57px;
-            background-repeat: no-repeat;
             margin-bottom: 5px;
-            background-position: -1px 2px;
+            background: url(/themes/theme-Stack2/assets/images/code-header.svg) no-repeat -1px 2px;
         }
 
         &:hover {
@@ -360,7 +359,6 @@
             direction: ltr;
         }
         pre {
-            margin: initial;
             padding: 0;
             margin: 0;
             width: auto;

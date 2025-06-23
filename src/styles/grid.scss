@@ -1,3 +1,4 @@
+@use "breakpoints" as bp;
 .container {
     margin-left: auto;
     margin-right: auto;
@@ -12,25 +13,25 @@
         max-width: var(--right-sidebar-max-width);
 
         /// Display right sidebar when min-width: lg
-        @include respond(lg) {
+        @include bp.respond(lg) {
             display: flex;
         }
     }
 
     &.extended {
-        @include respond(md) {
+        @include bp.respond(md) {
             max-width: 1024px;
             --left-sidebar-max-width: 25%;
             --right-sidebar-max-width: 30%;
         }
 
-        @include respond(lg) {
+        @include bp.respond(lg) {
             max-width: 1280px;
             --left-sidebar-max-width: 20%;
             --right-sidebar-max-width: 30%;
         }
 
-        @include respond(xl) {
+        @include bp.respond(xl) {
             max-width: 1536px;
             --left-sidebar-max-width: 15%;
             --right-sidebar-max-width: 25%;
@@ -38,17 +39,17 @@
     }
 
     &.compact {
-        @include respond(md) {
+        @include bp.respond(md) {
             --left-sidebar-max-width: 25%;
             max-width: 768px;
         }
 
-        @include respond(lg) {
+        @include bp.respond(lg) {
             max-width: 1024px;
             --left-sidebar-max-width: 20%;
         }
 
-        @include respond(xl) {
+        @include bp.respond(xl) {
             max-width: 1280px;
         }
     }
@@ -64,7 +65,7 @@
 
     &.on-phone--column {
         flex-direction: column;
-        @include respond(md) {
+        @include bp.respond(md) {
             flex-direction: unset;
         }
     }
@@ -83,7 +84,7 @@ main.main {
     flex-direction: column;
     gap: var(--section-separation);
 
-    @include respond(md) {
+    @include bp.respond(md) {
         padding-top: var(--main-top-padding);
     }
 }
@@ -91,11 +92,10 @@ main.main {
 .main-container {
     min-height: 100vh;
     align-items: flex-start;
-    padding: 0 15px;
     gap: var(--section-separation);
-    padding-top: var(--main-top-padding);
-    
-    @include respond(md) {
+    padding: var(--main-top-padding) 15px 0;
+
+    @include bp.respond(md) {
         padding: 0 20px;
     }
 }
