@@ -26,25 +26,34 @@
     }
   ],
   "scripts": {
-    "build": "tsc && vite build",
     "dev": "vite build --watch",
+    "build-only": "tsc && vite build",
+    "build": "pnpm run build-only && pnpm package",
     "lint": "eslint ./src --ext .js,.cjs,.mjs,.ts,.cts,.mts --ignore-path .gitignore",
-    "prettier": "prettier --write './src/**/*.{js,ts,css,json,ml,yaml,html}' './templates/**/*.html'"
+    "prettier": "prettier --write './src/**/*.{js,ts,css,json,ml,yaml,html}' './templates/**/*.html'",
+    "package": "npx @halo-dev/theme-package-cli",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "*.{ts,json,yaml,yml,html}": [
+      "prettier --write"
+    ]
   },
   "devDependencies": {
-    "@types/node": "18.11.9",
-    "@typescript-eslint/eslint-plugin": "^5.62.0",
-    "@typescript-eslint/parser": "^5.62.0",
-    "eslint": "^8.53.0",
-    "eslint-config-prettier": "^8.10.0",
-    "eslint-plugin-prettier": "^4.2.1",
-    "prettier": "^2.8.8",
-    "sass": "^1.70.0",
-    "typescript": "^4.9.5",
-    "vite": "^4.5.0"
+    "@types/node": "24.0.3",
+    "@typescript-eslint/eslint-plugin": "^8.34.1",
+    "@typescript-eslint/parser": "^8.34.1",
+    "eslint": "^9.29.0",
+    "eslint-config-prettier": "^10.1.5",
+    "eslint-plugin-prettier": "^5.5.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.1.2",
+    "prettier": "^3.6.0",
+    "sass-embedded": "^1.89.2",
+    "typescript": "^5.8.3",
+    "vite": "^6.3.5"
   },
   "dependencies": {
-    "tocbot": "^4.25.0"
-  },
-  "packageManager": "pnpm@8.15.4+sha1.c85a4305534f76d461407b59277b954bac97b5c4"
+    "tocbot": "^4.36.4"
+  }
 }

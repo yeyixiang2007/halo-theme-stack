@@ -3,23 +3,22 @@ import { fileURLToPath } from "url";
 import path from "path";
 
 export default defineConfig({
+  plugins: [],
   build: {
-    outDir: fileURLToPath(new URL('./templates/assets/dist/', import.meta.url)),
+    outDir: fileURLToPath(new URL("./templates/assets/dist", import.meta.url)),
     emptyOutDir: true,
-    minify: true,
-    cssMinify: true,
-    rollupOptions: {
-      input: {
-        // 指定两个入口文件
-        main: path.resolve(__dirname, "src/main.ts"),
-        search: path.resolve(__dirname, "src/ts/search.tsx"),
-        photos: path.resolve(__dirname, "src/ts/photos.tsx")
-      },
-      output: {
-        entryFileNames: `[name].js`,
-        assetFileNames: `style.css`,
-        chunkFileNames: `[name].[hash].js`,
+    lib: {
+      entry: path.resolve(__dirname, "src/main.ts"),
+      name: "main",
+      fileName: "main",
+      formats: ["iife"],
+    },
+  },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        api: "modern-compiler",
       },
     },
-  }
+  },
 });
