@@ -121,8 +121,11 @@ $defaultTagColors: #fff, #fff, #fff, #fff, #fff;
     --link-background-opacity: 0.5;
     --link-background-opacity-hover: 0.7;
 
-    --pre-background-color: #272822;
-    --pre-text-color: #f8f8f2;
+
+    --pre-text-color: #272822;
+    --pre-background-color: #fafafa
+
+
 
     --code-background-color: rgba(0, 0, 0, 0.12);
     --code-text-color: #808080;
@@ -137,6 +140,8 @@ $defaultTagColors: #fff, #fff, #fff, #fff, #fff;
         --table-border-color: #717171;
         --tr-even-background-color: #545454;
         --blockquote-background-color: rgb(75 75 75);
+        --pre-text-color: #f8f8f2;
+        --pre-background-color: #272822
     }
 }
 
