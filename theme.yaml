@@ -25,4 +25,4 @@ spec:
   settingName: "theme-Stack2-setting"
   configMapName: "theme-Stack2-configMap"
   version: "2.3.0"
-  requires: ">=2.21.0"
+  requires: ">=2.21.7"
