@@ -11,12 +11,14 @@ import { getColor } from "./ts/color";
 import menu from "./ts/menu";
 import createElement from "./ts/createElement";
 import StackColorScheme from "./ts/colorScheme";
+import { initMathIfExist } from "./ts/math";
 // import { setupScrollspy } from './ts/scrollspy';
 import { setupSmoothAnchors } from "./ts/smoothAnchors";
 import { initWaterfallIfExist } from "./ts/photos";
 import Search from "./ts/search";
 
 import * as tocbot from "tocbot";
+
 const Stack = {
   init: () => {
     /**
@@ -30,6 +32,10 @@ const Stack = {
       setupSmoothAnchors();
       // setupScrollspy();
     }
+
+    void initMathIfExist().catch((error) => {
+      console.error("Failed to initialize math rendering", error);
+    });
 
     /**
      * Add linear gradient background to tile style article

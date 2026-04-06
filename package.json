@@ -54,6 +54,7 @@
     "vite": "^6.3.5"
   },
   "dependencies": {
+    "katex": "^0.16.45",
     "tocbot": "^4.36.4"
   }
 }
